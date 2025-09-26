@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import requests
+import os
 import pandas as pd
 from PIL import Image
 from io import BytesIO
@@ -35,14 +36,22 @@ CROP_IMAGES = {
 }
 
 
-data =pd.read_csv(r"C:\Users\Adhi Ganapathy\Documents\Python_ws\Recommendation Engine 13092025\Crop recommendation system\Crop_recommendation.csv")
+# get the directory where the script is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# build path relative to the script
+csv_path = os.path.join(BASE_DIR, "Crop_recommendation.csv")
+
+# read the CSV
+data = pd.read_csv(csv_path)
 
 
 # -------------------------------
 # Load preprocessed data
 # -------------------------------
-with open(r"C:\Users\Adhi Ganapathy\Documents\Python_ws\Recommendation Engine 13092025\Crop recommendation system\Tree.pkl", "rb") as file:
+
+pickle_path = os.path.join(BASE_DIR, "Tree.pkl")
+with open(pickle_path, "rb") as file:
      Label =pickle.load(file)
      XB =pickle.load(file)
      column_name =pickle.load(file)
