@@ -37,5 +37,4 @@ This project uses multiple machine learning models (XGBoost, Random Forest, Deci
 
 ---
 
-## 📁 Project Structure
 
